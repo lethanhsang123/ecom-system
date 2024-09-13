@@ -5,6 +5,6 @@
 
 ## [1] Order Service
 
-[Order Service Architecture](./readme/order-service-architecture.png)
+![Order Service Architecture](./readme/order-service-architecture.png)
 
 
