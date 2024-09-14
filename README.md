@@ -17,6 +17,6 @@
 
 ## [II] Order Service
 
-![Order Service Architecture](./readme/order-service-architecture.png)
+![Order Service Architecture](./readme/ecom-system.png)
 
 
