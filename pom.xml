@@ -1,75 +1,92 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.3.2</version>
-    <relativePath/> <!--  Set empty for external parent projects. Use only for local parent projects.-->
-  </parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.2</version>
+        <relativePath/> <!--  Set empty for external parent projects. Use only for local parent projects.-->
+    </parent>
 
-  <groupId>com.sanzee.ecom.system</groupId>
-  <artifactId>ecom-system</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Sanzee Ecom System</name>
-  <modules>
-    <module>order-service</module>
-  </modules>
+    <groupId>com.sanzee.ecom.system</groupId>
+    <artifactId>ecom-system</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Sanzee Ecom System</name>
+    <modules>
+        <module>order-service</module>
+        <module>common</module>
+    </modules>
 
-  <packaging>pom</packaging>
+    <packaging>pom</packaging>
 
-  <properties>
-    <maven-compiler-source.version>21</maven-compiler-source.version>
-    <maven-compiler-target.version>21</maven-compiler-target.version>
-    <maven-compiler-plugin-version>3.13.0</maven-compiler-plugin-version>
-  </properties>
+    <properties>
+        <maven-compiler-source.version>21</maven-compiler-source.version>
+        <maven-compiler-target.version>21</maven-compiler-target.version>
+        <maven-compiler-plugin-version>3.13.0</maven-compiler-plugin-version>
+    </properties>
 
-  <dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>order-domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>order-application-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>order-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>order-dataaccess</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>order-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>common-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-      <dependency>
-        <groupId>com.sanzee.ecom.system</groupId>
-        <artifactId>order-domain-core</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sanzee.ecom.system</groupId>
-        <artifactId>order-application-service</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sanzee.ecom.system</groupId>
-        <artifactId>order-application</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sanzee.ecom.system</groupId>
-        <artifactId>order-dataaccess</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sanzee.ecom.system</groupId>
-        <artifactId>order-messaging</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
     </dependencies>
-  </dependencyManagement>
 
-  <dependencies></dependencies>
-
-  <build>
-    <!--    maven-compiler-plugin: Used to compile sources of project. Default source/target setting is 2.1-->
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin-version}</version>
-        <configuration>
-          <source>${maven-compiler-source.version}</source>
-          <target>${maven-compiler-target.version}</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <!--    maven-compiler-plugin: Used to compile sources of project. Default source/target setting is 2.1-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>${maven-compiler-source.version}</source>
+                    <target>${maven-compiler-target.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

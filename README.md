@@ -12,9 +12,7 @@
 
 #### 2. Hexagonal Architecture
 
-#### 3. Domain Driven Design
-
-- doc1
+#### 3. Domain-Driven Design
 
 
 ## [II] Order Service

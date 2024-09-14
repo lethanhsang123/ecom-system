@@ -8,4 +8,14 @@
     </parent>
     <artifactId>order-domain-core</artifactId>
     <name>Sanzee Ecom Order Domain Core</name>
+
+    <properties></properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sanzee.ecom.system</groupId>
+            <artifactId>common-domain</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
