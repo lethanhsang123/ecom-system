@@ -1,9 +1,23 @@
 # Ecommerce System
 
-- Clean Architecture
-- Domain Driven Design
+### Content
 
-## [1] Order Service
+
+- I. Documentations
+- II. Order Serivce Architecture
+
+## [I] Documentations
+
+#### 1. Clean Architecture
+
+#### 2. Hexagonal Architecture
+
+#### 3. Domain Driven Design
+
+- doc1
+
+
+## [II] Order Service
 
 ![Order Service Architecture](./readme/order-service-architecture.png)
 
