@@ -8,6 +8,7 @@ import com.sanzee.ecom.system.order.service.domain.dto.create.CreateOrderCommand
 import com.sanzee.ecom.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.sanzee.ecom.system.order.service.domain.dto.create.OrderAddress;
 import com.sanzee.ecom.system.order.service.domain.dto.message.CustomerModel;
+import com.sanzee.ecom.system.order.service.domain.dto.track.TrackOrderResponse;
 import com.sanzee.ecom.system.order.service.domain.entity.*;
 import com.sanzee.ecom.system.order.service.domain.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,14 @@ public class OrderDataMapper {
         return CreateOrderResponse.builder()
                 .orderTrackingId(order.getTrackingId().getValue())
                 .orderStatus(order.getOrderStatus())
+                .build();
+    }
+
+    public TrackOrderResponse orderToTrackOrderResponse(Order order) {
+        return TrackOrderResponse.builder()
+                .orderTrackingId(order.getTrackingId().getValue())
+                .orderStatus(order.getOrderStatus())
+                .failureMessages(order.getFailureMessages())
                 .build();
     }
 
