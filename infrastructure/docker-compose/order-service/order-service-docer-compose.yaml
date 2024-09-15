@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  order-datasource:
+    hostname: order-datasource
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - ${GLOBAL_NETWORK:-kafka}
+    restart: unless-stopped
+  order-service:
+    container_name: order-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: order-container:latest
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-datasource:5432/postgres?currentSchema=orders&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_PROFILE_ACTIVE=dev
+      - PORT=8092
+    restart: always
+    ports:
+      - "8092:8092"
+    networks:
+      - ${GLOBAL_NETWORK:-kafka}
+    depends_on:
+      - order-datasource
+volumes:
+  postgres:

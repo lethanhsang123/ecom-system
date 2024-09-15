@@ -65,6 +65,16 @@
             </dependency>
             <dependency>
                 <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>common-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
+                <artifactId>common-dataaccess</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sanzee.ecom.system</groupId>
                 <artifactId>kafka-consumer</artifactId>
                 <version>${project.version}</version>
             </dependency>

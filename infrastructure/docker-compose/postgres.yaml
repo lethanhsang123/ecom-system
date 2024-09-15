@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  order-datasource:
+    hostname: order-datasource
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - ${GLOBAL_NETWORK:-kafka}
+    restart: unless-stopped
+
+volumes:
+  postgres:
