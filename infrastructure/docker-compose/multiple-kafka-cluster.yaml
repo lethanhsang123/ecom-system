@@ -17,10 +17,10 @@ services:
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
-    depends_on:
-      - zoo1
-      - zoo2
-      - zoo3
+#    depends_on:
+#      - zoo1
+#      - zoo2
+#      - zoo3
     volumes:
       - "./volumes/kafka/broker-1:/var/lib/kafka/data"
     networks:
@@ -42,10 +42,10 @@ services:
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
-    depends_on:
-      - zoo1
-      - zoo2
-      - zoo3
+#    depends_on:
+#      - zoo1
+#      - zoo2
+#      - zoo3
     volumes:
       - "./volumes/kafka/broker-2:/var/lib/kafka/data"
     networks:
@@ -67,10 +67,10 @@ services:
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
-    depends_on:
-      - zoo1
-      - zoo2
-      - zoo3
+#    depends_on:
+#      - zoo1
+#      - zoo2
+#      - zoo3
     volumes:
       - "./volumes/kafka/broker-3:/var/lib/kafka/data"
     networks:
@@ -81,9 +81,9 @@ services:
     hostname: kafka-schema-registry
     container_name: kafka-schema-registry
     depends_on:
-      - zoo1
-      - zoo2
-      - zoo3
+#      - zoo1
+#      - zoo2
+#      - zoo3
       - kafka1
       - kafka2
       - kafka3
@@ -101,9 +101,9 @@ services:
   kafka-manager:
     image: hlebalbau/kafka-manager:${KAFKA_MANAGER_VERSION:-latest}
     depends_on:
-      - zoo1
-      - zoo2
-      - zoo3
+#      - zoo1
+#      - zoo2
+#      - zoo3
       - kafka1
       - kafka2
       - kafka3
