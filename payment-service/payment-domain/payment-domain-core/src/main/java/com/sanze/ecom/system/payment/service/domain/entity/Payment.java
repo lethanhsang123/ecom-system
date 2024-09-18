@@ -49,6 +49,11 @@ public class Payment extends AggregateRoot<PaymentId> {
         createdAt = builder.createdAt;
     }
 
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public OrderId getOrderId() {
         return orderId;
     }
