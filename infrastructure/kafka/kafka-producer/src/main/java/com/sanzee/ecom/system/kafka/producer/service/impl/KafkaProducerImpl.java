@@ -35,7 +35,7 @@ public class KafkaProducerImpl <K extends Serializable, V extends SpecificRecord
             CompletableFuture<SendResult<K, V>> kafkaResultFuture = kafkaTemplate.send(topicName, key, message);
             kafkaResultFuture.whenComplete(callback);
         } catch (KafkaException e) {
-            log.error("Error on kafka producer with key: {}, message: {} and exception: {}", key, message,
+            log.error("Error on kafka producer with key: {}, message: {} and com.sanzee.ecom.system.restaurant.service.domain.exception: {}", key, message,
                     e.getMessage());
             throw new KafkaProducerException("Error on kafka producer with key: " + key + " and message: " + message);
         }

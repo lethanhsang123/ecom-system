@@ -57,7 +57,7 @@ public class PaymentRequestHelper {
 
     @Transactional
     public PaymentEvent persistPayment(PaymentRequest paymentRequest) {
-        log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
+        log.info("Received payment complete com.sanzee.ecom.system.restaurant.service.domain.event for order id: {}", paymentRequest.getOrderId());
         Payment payment = paymentDataMapper.paymentRequestModelToPayment(paymentRequest);
         CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
         List<CreditHistory> creditHistories = getCreditHistory(payment.getCustomerId());
@@ -76,7 +76,7 @@ public class PaymentRequestHelper {
 
     @Transactional
     public PaymentEvent persistCancelPayment(PaymentRequest paymentRequest) {
-        log.info("Received payment rollback event for order id: {}", paymentRequest.getOrderId());
+        log.info("Received payment rollback com.sanzee.ecom.system.restaurant.service.domain.event for order id: {}", paymentRequest.getOrderId());
         Optional<Payment> paymentResponse = paymentRepository
                 .findByOrderId(UUID.fromString(paymentRequest.getOrderId()));
         if (paymentResponse.isEmpty()) {

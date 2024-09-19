@@ -1,8 +1,8 @@
 package com.sanzee.ecom.system.order.service.dataaccess.restaurant.adapter;
 
-import com.sanzee.ecom.system.order.service.dataaccess.restaurant.entity.RestaurantEntity;
+import com.sanzee.ecom.system.dataaccess.restaurant.entity.RestaurantEntity;
+import com.sanzee.ecom.system.dataaccess.restaurant.repository.RestaurantJpaRepository;
 import com.sanzee.ecom.system.order.service.dataaccess.restaurant.mapper.RestaurantDataAccessMapper;
-import com.sanzee.ecom.system.order.service.dataaccess.restaurant.repository.RestaurantJpaRepository;
 import com.sanzee.ecom.system.order.service.domain.entity.Restaurant;
 import com.sanzee.ecom.system.order.service.domain.ports.output.repository.RestaurantRepository;
 import org.springframework.stereotype.Component;

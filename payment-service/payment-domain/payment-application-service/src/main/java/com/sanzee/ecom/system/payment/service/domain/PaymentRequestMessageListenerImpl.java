@@ -44,7 +44,7 @@ public class PaymentRequestMessageListenerImpl implements PaymentRequestMessageL
     }
 
     private void fireEvent(PaymentEvent paymentEvent) {
-        log.info("Publishing payment event with payment id: {} and order id: {}",
+        log.info("Publishing payment com.sanzee.ecom.system.restaurant.service.domain.event with payment id: {} and order id: {}",
                 paymentEvent.getPayment().getId().getValue(),
                 paymentEvent.getPayment().getOrderId().getValue());
         paymentEvent.fire();
