@@ -16,11 +16,11 @@ public class PaymentMessagingDataMapper {
 
     public PaymentResponseAvroModel paymentEventToPaymentResponseAvroModel(PaymentEvent paymentCompletedEvent) {
         return PaymentResponseAvroModel.newBuilder()
-                .setId(UUID.randomUUID())
-                .setSagaId(UUID.fromString(Strings.EMPTY))
-                .setPaymentId(paymentCompletedEvent.getPayment().getId().getValue())
-                .setCustomerId(paymentCompletedEvent.getPayment().getCustomerId().getValue())
-                .setOrderId(paymentCompletedEvent.getPayment().getOrderId().getValue())
+                .setId(UUID.randomUUID().toString())
+                .setSagaId(UUID.randomUUID().toString())
+                .setPaymentId(paymentCompletedEvent.getPayment().getId().getValue().toString())
+                .setCustomerId(paymentCompletedEvent.getPayment().getCustomerId().getValue().toString())
+                .setOrderId(paymentCompletedEvent.getPayment().getOrderId().getValue().toString())
                 .setPrice(paymentCompletedEvent.getPayment().getPrice().getAmount())
                 .setCreatedAt(paymentCompletedEvent.getCreatedAt().toInstant())
                 .setPaymentStatus(PaymentStatus.valueOf(paymentCompletedEvent.getPayment().getPaymentStatus().name()))
@@ -30,10 +30,10 @@ public class PaymentMessagingDataMapper {
 
     public PaymentRequest paymentRequestAvroModelToPaymentRequest(PaymentRequestAvroModel paymentRequestAvroModel) {
         return PaymentRequest.builder()
-                .id(paymentRequestAvroModel.getId().toString())
-                .sagaId(paymentRequestAvroModel.getSagaId().toString())
-                .customerId(paymentRequestAvroModel.getCustomerId().toString())
-                .orderId(paymentRequestAvroModel.getOrderId().toString())
+                .id(paymentRequestAvroModel.getId())
+                .sagaId(paymentRequestAvroModel.getSagaId())
+                .customerId(paymentRequestAvroModel.getCustomerId())
+                .orderId(paymentRequestAvroModel.getOrderId())
                 .price(paymentRequestAvroModel.getPrice())
                 .createdAt(paymentRequestAvroModel.getCreatedAt())
                 .paymentOrderStatus(PaymentOrderStatus.valueOf(paymentRequestAvroModel.getPaymentOrderStatus().name()))

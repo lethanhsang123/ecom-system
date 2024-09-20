@@ -8,4 +8,12 @@
     </parent>
     <artifactId>payment-application</artifactId>
     <name>Sanzee Ecom Payment Service Application</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

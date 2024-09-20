@@ -19,10 +19,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
+#    hibernate:
+#      ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=orders&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver

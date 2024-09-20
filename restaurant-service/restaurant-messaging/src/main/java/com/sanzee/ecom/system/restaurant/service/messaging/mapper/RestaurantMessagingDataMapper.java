@@ -20,10 +20,10 @@ public class RestaurantMessagingDataMapper {
     public RestaurantApprovalResponseAvroModel orderApprovalEventToRestaurantApprovalResponseAvroMode(
             OrderApprovalEvent orderApprovalEvent) {
         return RestaurantApprovalResponseAvroModel.newBuilder()
-                .setId(UUID.randomUUID())
-                .setSagaId(UUID.fromString(Strings.EMPTY))
-                .setOrderId(orderApprovalEvent.getOrderApproval().getOrderId().getValue())
-                .setRestaurantId(orderApprovalEvent.getRestaurantId().getValue())
+                .setId(UUID.randomUUID().toString())
+                .setSagaId(UUID.randomUUID().toString())
+                .setOrderId(orderApprovalEvent.getOrderApproval().getOrderId().getValue().toString())
+                .setRestaurantId(orderApprovalEvent.getRestaurantId().getValue().toString())
                 .setCreatedAt(orderApprovalEvent.getCreatedAt().toInstant())
                 .setOrderApprovalStatus(OrderApprovalStatus.valueOf(
                         orderApprovalEvent.getOrderApproval().getApprovalStatus().name()))
@@ -34,10 +34,10 @@ public class RestaurantMessagingDataMapper {
     public RestaurantApprovalRequest restaurantApprovalRequestAvroModelToRestaurantApproval(
             RestaurantApprovalRequestAvroModel restaurantApprovalRequestAvroModel) {
         return RestaurantApprovalRequest.builder()
-                .id(restaurantApprovalRequestAvroModel.getId().toString())
-                .sagaId(restaurantApprovalRequestAvroModel.getSagaId().toString())
-                .restaurantId(restaurantApprovalRequestAvroModel.getRestaurantId().toString())
-                .orderId(restaurantApprovalRequestAvroModel.getOrderId().toString())
+                .id(restaurantApprovalRequestAvroModel.getId())
+                .sagaId(restaurantApprovalRequestAvroModel.getSagaId())
+                .restaurantId(restaurantApprovalRequestAvroModel.getRestaurantId())
+                .orderId(restaurantApprovalRequestAvroModel.getOrderId())
                 .restaurantOrderStatus(RestaurantOrderStatus.valueOf(restaurantApprovalRequestAvroModel
                         .getRestaurantOrderStatus().name()))
                 .products(restaurantApprovalRequestAvroModel.getProducts()

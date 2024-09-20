@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS ecom CASCADE;
+DROP SCHEMA IF EXISTS "order" CASCADE;
 
-CREATE SCHEMA ecom;
+CREATE SCHEMA "order";
 
 CREATE
 EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -8,9 +8,9 @@ EXTENSION IF NOT EXISTS "uuid-ossp";
 DROP TYPE IF EXISTS order_status;
 CREATE TYPE order_status AS ENUM ('PENDING', 'PAID', 'APPROVED', 'CANCELLED', 'CANCELLING');
 
-DROP TABLE IF EXISTS ecom.orders CASCADE;
+DROP TABLE IF EXISTS "order".orders CASCADE;
 
-CREATE TABLE ecom.orders
+CREATE TABLE "order".orders
 (
     id               uuid           NOT NULL,
     customer_id      uuid           NOT NULL,
@@ -22,9 +22,9 @@ CREATE TABLE ecom.orders
     CONSTRAINT orders_pkey PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS ecom.order_items CASCADE;
+DROP TABLE IF EXISTS "order".order_items CASCADE;
 
-CREATE TABLE ecom.order_items
+CREATE TABLE "order".order_items
 (
     id         bigint         NOT NULL,
     order_id   uuid           NOT NULL,
@@ -35,16 +35,16 @@ CREATE TABLE ecom.order_items
     CONSTRAINT order_items_pkey PRIMARY KEY (id, order_id)
 );
 
-ALTER TABLE ecom.order_items
-    ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
-        REFERENCES ecom.orders (id) MATCH SIMPLE
+ALTER TABLE "order".order_items
+    ADD CONSTRAINT "FK_order_ID" FOREIGN KEY (order_id)
+        REFERENCES "order".orders (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE CASCADE
     NOT VALID;
 
-DROP TABLE IF EXISTS orders.order_address CASCADE;
+DROP TABLE IF EXISTS "order".order_address CASCADE;
 
-CREATE TABLE ecom.order_address
+CREATE TABLE "order".order_address
 (
     id          uuid                                           NOT NULL,
     order_id    uuid UNIQUE                                    NOT NULL,
@@ -54,15 +54,15 @@ CREATE TABLE ecom.order_address
     CONSTRAINT order_address_pkey PRIMARY KEY (id, order_id)
 );
 
-ALTER TABLE ecom.order_address
-    ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
-        REFERENCES ecom.orders (id) MATCH SIMPLE
+ALTER TABLE "order".order_address
+    ADD CONSTRAINT "FK_order_ID" FOREIGN KEY (order_id)
+        REFERENCES "order".orders (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE CASCADE
     NOT VALID;
 
-DROP TABLE IF EXISTS ecom.customers CASCADE;
-CREATE TABLE ecom.customers
+DROP TABLE IF EXISTS "order".customers CASCADE;
+CREATE TABLE "order".customers
 (
     id         uuid                                           NOT NULL,
     username   character varying COLLATE pg_catalog."default" NOT NULL,
@@ -71,14 +71,14 @@ CREATE TABLE ecom.customers
     CONSTRAINT customers_pkey PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS ecom.restaurants CASCADE;
-
-CREATE TABLE ecom.restaurants
-(
-    id     uuid                                           NOT NULL,
-    name   character varying COLLATE pg_catalog."default" NOT NULL,
-    active boolean                                        NOT NULL,
-    CONSTRAINT restaurants_pkey PRIMARY KEY (id)
-);
+-- DROP TABLE IF EXISTS "order".restaurants CASCADE;
+--
+-- CREATE TABLE "order".restaurants
+-- (
+--     id     uuid                                           NOT NULL,
+--     name   character varying COLLATE pg_catalog."default" NOT NULL,
+--     active boolean                                        NOT NULL,
+--     CONSTRAINT restaurants_pkey PRIMARY KEY (id)
+-- );
 
 

@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS ecom CASCADE;
+DROP SCHEMA IF EXISTS payment CASCADE;
 
-CREATE SCHEMA ecom;
+CREATE SCHEMA payment;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
@@ -8,9 +8,9 @@ DROP TYPE IF EXISTS payment_status;
 
 CREATE TYPE payment_status AS ENUM ('COMPLETED', 'CANCELLED', 'FAILED');
 
-DROP TABLE IF EXISTS "ecom".payments CASCADE;
+DROP TABLE IF EXISTS "payment".payments CASCADE;
 
-CREATE TABLE "ecom".payments
+CREATE TABLE "payment".payments
 (
     id uuid NOT NULL,
     customer_id uuid NOT NULL,
@@ -21,9 +21,9 @@ CREATE TABLE "ecom".payments
     CONSTRAINT payments_pkey PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS "ecom".credit_entry CASCADE;
+DROP TABLE IF EXISTS "payment".credit_entry CASCADE;
 
-CREATE TABLE "ecom".credit_entry
+CREATE TABLE "payment".credit_entry
 (
     id uuid NOT NULL,
     customer_id uuid NOT NULL,
@@ -35,9 +35,9 @@ DROP TYPE IF EXISTS transaction_type;
 
 CREATE TYPE transaction_type AS ENUM ('DEBIT', 'CREDIT');
 
-DROP TABLE IF EXISTS "ecom".credit_history CASCADE;
+DROP TABLE IF EXISTS "payment".credit_history CASCADE;
 
-CREATE TABLE "ecom".credit_history
+CREATE TABLE "payment".credit_history
 (
     id uuid NOT NULL,
     customer_id uuid NOT NULL,
@@ -46,5 +46,5 @@ CREATE TABLE "ecom".credit_history
     CONSTRAINT credit_history_pkey PRIMARY KEY (id)
 );
 
-DROP TYPE IF EXISTS outbox_status;
-CREATE TYPE outbox_status AS ENUM ('STARTED', 'COMPLETED', 'FAILED');
+-- DROP TYPE IF EXISTS outbox_status;
+-- CREATE TYPE outbox_status AS ENUM ('STARTED', 'COMPLETED', 'FAILED');

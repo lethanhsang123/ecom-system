@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   order-datasource:
-    hostname: order-datasource
+    hostname: datasource
     image: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-admin}
