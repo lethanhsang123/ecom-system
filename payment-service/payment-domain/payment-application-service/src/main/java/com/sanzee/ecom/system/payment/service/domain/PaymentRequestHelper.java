@@ -4,6 +4,7 @@ import com.sanze.ecom.system.payment.service.domain.PaymentDomainService;
 import com.sanze.ecom.system.payment.service.domain.entity.CreditEntry;
 import com.sanze.ecom.system.payment.service.domain.entity.CreditHistory;
 import com.sanze.ecom.system.payment.service.domain.entity.Payment;
+import com.sanze.ecom.system.payment.service.domain.event.PaymentCompletedEvent;
 import com.sanze.ecom.system.payment.service.domain.event.PaymentEvent;
 import com.sanze.ecom.system.payment.service.domain.exception.PaymentNotFoundException;
 import com.sanzee.ecom.system.domain.valueobject.CustomerId;

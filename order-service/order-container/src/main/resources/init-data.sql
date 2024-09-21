@@ -18,5 +18,6 @@
 --         true, 'restaurant 2');
 
 INSERT INTO "order".customers (id, username, first_name, last_name)
-VALUES ('69a73039-76bd-4b54-b94c-fc88d985d498'::uuid, 'customer 1', 'first name 1', 'last name 1'),
-       ('2d7de17e-6295-41dc-99e2-d125acfc8689'::uuid, 'customer 2', 'first name 2', 'last name 2');
+VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb41'::uuid, 'customer 1', 'first name 1', 'last name 1'),
+       ('d215b5f8-0249-4dc5-89a3-51fd148cfb43'::uuid, 'customer 2', 'first name 2', 'last name 2');
+

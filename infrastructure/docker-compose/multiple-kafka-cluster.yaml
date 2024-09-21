@@ -76,28 +76,6 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
 
-  kafka-schema-registry:
-    image: confluentinc/cp-schema-registry:${KAFKA_VERSION:-latest}
-    hostname: kafka-schema-registry
-    container_name: kafka-schema-registry
-    depends_on:
-#      - zoo1
-#      - zoo2
-#      - zoo3
-      - kafka1
-      - kafka2
-      - kafka3
-    ports:
-      - "8081:8081"
-    environment:
-      SCHEMA_REGISTRY_HOST_NAME: kafka-schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zoo1:2181,zoo2:2182,zoo3:2183'
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://kafka1:19092,PLAINTEXT://kafka2:19093,PLAINTEXT://kafka3:19094'
-      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
-      SCHEMA_REGISTRY_DEBUG: 'true'
-    networks:
-      - ${GLOBAL_NETWORK:-kafka}
-
   kafka-manager:
     image: hlebalbau/kafka-manager:${KAFKA_MANAGER_VERSION:-latest}
     depends_on:
