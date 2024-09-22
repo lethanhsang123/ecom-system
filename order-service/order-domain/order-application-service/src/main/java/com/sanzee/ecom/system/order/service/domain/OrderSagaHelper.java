@@ -1,9 +1,11 @@
 package com.sanzee.ecom.system.order.service.domain;
 
 import com.sanzee.ecom.system.domain.valueobject.OrderId;
+import com.sanzee.ecom.system.domain.valueobject.OrderStatus;
 import com.sanzee.ecom.system.order.service.domain.entity.Order;
 import com.sanzee.ecom.system.order.service.domain.exception.OrderNotFoundException;
 import com.sanzee.ecom.system.order.service.domain.ports.output.repository.OrderRepository;
+import com.sanzee.ecom.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -32,4 +34,15 @@ public class OrderSagaHelper {
     void saveOrder(Order order) {
         orderRepository.save(order);
     }
+
+    SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus) {
+        return switch (orderStatus) {
+            case PAID -> SagaStatus.PROCESSING;
+            case APPROVED -> SagaStatus.SUCCEEDED;
+            case CANCELLING -> SagaStatus.COMPENSATING;
+            case CANCELLED -> SagaStatus.COMPENSATED;
+            default -> SagaStatus.STARTED;
+        };
+    }
+
 }
